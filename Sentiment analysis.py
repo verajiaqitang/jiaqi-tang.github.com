@@ -11,8 +11,8 @@ from nltk.corpus import subjectivity
 from nltk.sentiment.util import *
 import pandas as pd
 
-
-reader = csv.reader(open('qiqi2.csv', 'rU'))
+#import the data 
+reader = csv.reader(open('filename.csv', 'rU'))
 column = [row[2] for row in reader]
 
 sent_tokenizer=nltk.data.load('tokenizers/punkt/english.pickle')
@@ -32,17 +32,17 @@ for sentence in sents:
 			p="netural"
 	else:
 			p="negtive"
-	print p
+	#print p
 	polarity.append(p)
 	score.append(ss["compound"])
 	for k in sorted(ss):
-		print k,ss[k]
+		#print k,ss[k]
 
 
 
-df = pd.read_csv('qiqi2.csv')
+df = pd.read_csv('filename.csv')
 new_column = pd.DataFrame({'Scores': score})
 df = df.merge(new_column, left_index = True, right_index = True)
 new_column2= pd.DataFrame({'Polarity': polarity})
 df = df.merge(new_column2, left_index = True, right_index = True)
-df.to_csv('qiqi2.csv')
+df.to_csv('filename.csv')
