@@ -7,10 +7,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 import time
-reader=csv.reader(open('byday4.csv','rU'))
-reader2=csv.reader(open('byday4.csv','rU'))
-d = [row[5] for row in reader]
-c=[row[6] for row in reader2]
+reader=csv.reader(open('filename.csv','rU'))
+reader2=csv.reader(open('filename.csv','rU'))
+d = [row[n] for row in reader]
+c=[row[m] for row in reader2]
 train_score=[]
 train_crimes=[]
 test_score=[]
@@ -36,8 +36,7 @@ for i in range(101,len(d)):
 
 for i in range(101,len(c)):
 	testset_y.append(float(c[i]))  
-#for i in range(len(test_crimes)):
-	#testset_y.append(1)
+
 	
 vy=np.matrix(trainset_y)
 vx=np.matrix(train_score)
@@ -66,11 +65,14 @@ while (alph*np.linalg.norm(gradient(X,Y,betas)) > tol) and (niter < 20000):
     # Your code here!
     betas = betas - alph*gradient(X,Y,betas)
     niter += 1
+   
+
+
+print betas
 
 s=lmr3.intercept_
 betas=np.matrix(betas[1,0])
 y_true=testset_y
-s=24.89637252
 intercept=[]
 for i in range(len(y_true)):
 	intercept.append(s)
@@ -78,16 +80,10 @@ intercept=np.matrix(intercept)
 intercept=intercept.transpose()
 	
 y_pred=np.dot(test_score, betas)+intercept
-def l2_error(y_true, y_pred):
-    """
-    calculate the sum of squared errors (i.e. "L2 error") 
-    given a vector of true ys and a vector of predicted ys
-    """
+def new_error(y_true, y_pred):
     diff = (y_true-y_pred)
     return np.sqrt(np.dot(diff.T, diff))
-errors=l2_error(y_true, y_pred)
+errors=new_error(y_true, y_pred)
 print errors
-#print betas
-#f = plt.figure()
-#plt.scatter(vx,vy) 
-#plt.show()
+
+
