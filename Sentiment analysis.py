@@ -10,13 +10,34 @@ from nltk.corpus import PlaintextCorpusReader
 from nltk.corpus import subjectivity
 from nltk.sentiment.util import *
 import pandas as pd
+import re
 
 #import the data 
 reader = csv.reader(open('filename.csv', 'rU'))
 column = [row[2] for row in reader]
 
+reader = csv.reader(open('qiqi2.csv', 'rU'))
+	
+column = [row[3] for row in reader]
+column2=[]
+
+for i in range(len(column)):
+	
+	text=column[i]
+
+	emoji_pattern = re.compile(
+    	u"(\ud83d[\ude00-\ude4f])|"  # emoticons
+    	u"(\ud83c[\udf00-\uffff])|"  # symbols & pictographs (1 of 2)
+    	u"(\ud83d[\u0000-\uddff])|"  # symbols & pictographs (2 of 2)
+    	u"(\ud83d[\ude80-\udeff])|"  # transport & map symbols
+    	u"(\ud83c[\udde0-\uddff])"  # flags (iOS)
+    	"+", flags=re.UNICODE)
+
+	print(emoji_pattern.sub(r'', text)) # no emoji
+	column2.append(text)
+	
 sent_tokenizer=nltk.data.load('tokenizers/punkt/english.pickle')
-sents=[sent_tokenizer.tokenize(str(col)) for col in column ]
+sents=[sent_tokenizer.tokenize(str(col)) for col in column2 ]
 
 sid = SIA()
 
