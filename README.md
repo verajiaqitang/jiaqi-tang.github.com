@@ -9,8 +9,12 @@ analysis.
 2. After getting sentiment scores and polarities of tweets,I used basic machine learing method for predictive modeling:sentiment
 Scores is predictor. Robbery crime counts is outcome. I used OLS regression ,for Y and X are continous variables.
 
+
+
 Y= a+ β X+ u
 For each day:
 Y                               occurrences of robbery crime
 X                               average sentiment scores 
 Use gradient Function to complete the Gradient Descent for robbery crime prediction in my project:
+
+
