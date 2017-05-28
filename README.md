@@ -18,12 +18,16 @@ Then find the errors between observed y and predicted y by using rest of my data
 the file Predictive-modeling(ols_regression).py is my python file for predictive modeling for this case.
 
 3. Demographics part:
-first , get the first names of people who post the tweet in my dataset, and get the median age by their first name:
+first , get the first names of people who post the tweet in my dataset, the file named" username.py" in my github is the my python program for getting first name of each tweet.
 
+Second: get the median age by their first name:
 Methodology:
 
 Baby name dataset: I created a dataset that show how many people were born in each first name in this year, the year range is from 1990 to 2015, I created this dataset by getting the data of baby name dataset from Social Security Administrition. 
 Use the method from life table to remove the people who are supposed to be dead, and the get the median age and gender in 2015 of each first name.
+
+(I upload my dataset of median age in each first name , the file of this dataset named" medianage.csv" in this github.
+
 Finally, match each first name of my twitter dataset with their median age and gender , in this way, I got the age distribution and gender distribution of the people who post these tweets in my dataset.
 
 5. Furture work:
