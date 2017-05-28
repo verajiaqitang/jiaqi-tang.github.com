@@ -2,6 +2,8 @@
 my online resume 
 Welcome to my project which is on robbery crime prediction using twitter sentiment and demographics(In my github, there is a small start part of my project, I'll post my code and modeling more later):
 
+!!!!The result that I have already finished is showed as a powerpoint named "result and presetation.pptx" in this github.!!!!
+
 1. First, I analyzed the tweets and I used sentiment analysis for processing each tweet and then got sentiment score of each 
 tweet. Finally I export the result to a csv file. The file which is " Sentiment analysis.py " is my python file for sentiment
 analysis.
