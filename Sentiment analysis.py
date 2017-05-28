@@ -12,15 +12,12 @@ from nltk.sentiment.util import *
 import pandas as pd
 import re
 
-#import the data 
+#import the tweet data from csv
 reader = csv.reader(open('filename.csv', 'rU'))
-column = [row[2] for row in reader]
+column = [row[n] for row in reader]
 
-reader = csv.reader(open('qiqi2.csv', 'rU'))
-	
-column = [row[3] for row in reader]
-column2=[]
 
+#remove emoji of each tweet
 for i in range(len(column)):
 	
 	text=column[i]
@@ -44,6 +41,7 @@ sid = SIA()
 score=[]
 polarity=[]
 
+#the function for getting score and ploarity of sentiment in each twitter
 for sentence in sents:
 	print(sentence)
 	ss = sid.polarity_scores(str(sentence)) 
@@ -60,7 +58,7 @@ for sentence in sents:
 		#print k,ss[k]
 
 
-
+# output the score and ploarity as new two columns to the previous csv file and match with each tweet
 df = pd.read_csv('filename.csv')
 new_column = pd.DataFrame({'Scores': score})
 df = df.merge(new_column, left_index = True, right_index = True)
